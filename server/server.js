@@ -1,27 +1,25 @@
 const express = require("express");
 const { default: mongoose } = require("mongoose");
-  const cors = require("cors");
-const PORT = 4000;
-const app = express();
-app.use(cors)
+const cors = require("cors");
+const bodyParser = require("body-parser");
+const routertransction = require("./routes/transctions");
+const connext = require("./database/mangodb");
+const routerAuthApi = require("./routes/AuthApi");
 
+const PORT = 4000;
+const app = express(); 
+app.use(cors());
+
+app.use(bodyParser.json());
+connext();
+
+app.use("/transaction", routertransction);
+app.use("/auth", routerAuthApi);
 
 app.get("/", (req, res) => {
-  res.send("Hello world");
+  res.send("Hello world Transaction Api");
 });
 
-     
-   async function connext(params) {
-    await   mongoose.connect(
-        "mongodb+srv://viswa:viswa@cluster0.wgfk0br.mongodb.net/?retryWrites=true&w=majority"
-      )
-      console.log("mangoDb is connected");
-    
-}
-connext()
-
-
 app.listen(PORT, (req, res) => {
-  // res.send("hallom welcome to backend")
   console.log("servr runing at http://localhost:4000 ");
 });

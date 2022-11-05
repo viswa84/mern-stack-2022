@@ -1,54 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Button from "@mui/material/Button";
+import ButtonAppBar from "./components/Appbar";
+import TransactionForm from "./components/TransactionFoem";
+import TransactionsList from "./components/TransactionList";
+import { Container } from "@mui/system";
 
-// import './App.css';
-const initial = {
-  amount: 0,
-  description: "",
-  date: "",
-};
+import { Outlet } from "react-router-dom";
 
 function App() {
-  const [fom, Setform] = useState(initial);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    // console.log(fom);
-    const res = await fetch("http://localhost :4000/transaction", {
-      method: "POST",
-      body: fom,
-    });
-  };
-  const handelechange = (e) => {
-    const { name, value } = e.target;
-
-    Setform({ ...fom, [name]: value });
-  };
   return (
-    <div className="App">
-      <form onSubmit={handleSubmit}>
-        <input
-          name="amount"
-          onChange={handelechange}
-          type="number"
-          value={fom.amount}
-          placeholder="Enter trasaction amount"
-        />
-        <input
-          name="description"
-          onChange={handelechange}
-          type="text"
-          value={fom.description}
-          placeholder="Enter trasaction details"
-        />
-        <input
-          onChange={handelechange}
-          name="date"
-          value={fom.date}
-          type="date"
-        />
-        <button type="submit">Submit</button>
-      </form>
-    </div>
+    <>
+      <ButtonAppBar />
+      <Outlet/>
+     
+    </>
   );
 }
 
