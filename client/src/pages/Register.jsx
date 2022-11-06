@@ -30,7 +30,10 @@ export default function Register() {
 
    const res = await  fetch("http://localhost:4000/auth/register",{
     method: "POST",
-    body: JSON.stringify(fom)
+    body: JSON.stringify(fom),
+    headers:{
+      "content-type": "application/json"
+    }
    })
 
    if(res.ok){
