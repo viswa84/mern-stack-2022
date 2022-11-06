@@ -60,7 +60,7 @@ routerAuthApi.post("/login", async(req, res) => {
       username:email,
       _id:userExists._id,
      }
-  const token = jwt.sign(payload,"some secret.");
+  const token = jwt.sign(payload,"some secret." );
 
   console.log(token);
 

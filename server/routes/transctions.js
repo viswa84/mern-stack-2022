@@ -1,5 +1,3 @@
-
-
 const Transaction = require("../models/transaction.js");
 const passport = require("passport");
 
@@ -7,11 +5,14 @@ const express = require("express");
 
 const routertransction = express.Router();
 
-
-routertransction.get("/", async (req, res) => {
-  const transcation = await Transaction.find({}).sort({ createdAt: -1 });
-  res.json({ data: transcation });
-});
+routertransction.get(
+  "/",
+ 
+  async (req, res) => {
+    const transcation = await Transaction.find({}).sort({ createdAt: -1 });
+    res.json({ data: transcation });
+  }
+);
 
 routertransction.post("/", async (req, res) => {
   const { amount, description, date } = req.body;
@@ -26,18 +27,17 @@ routertransction.post("/", async (req, res) => {
 
   res.json({ message: "Sucess" });
 });
-routertransction.delete("/:id", async(req, res) =>{
+routertransction.delete("/:id", async (req, res) => {
   const id = req.params.id;
-  await  Transaction.findByIdAndDelete(id)
-  res.json({ message: "Sucess"});
+  await Transaction.findByIdAndDelete(id);
+  res.json({ message: "Sucess" });
 });
 
-routertransction.patch("/:id", async(req,res)=>{
+routertransction.patch("/:id", async (req, res) => {
   const id = req.params.id;
-     await Transaction.updateOne({_id:id},{$set:req.body})
+  await Transaction.updateOne({ _id: id }, { $set: req.body });
 
-  res.json({message: "success"})
-   
-})
+  res.json({ message: "success" });
+});
 
-module.exports = routertransction ;
+module.exports = routertransction;

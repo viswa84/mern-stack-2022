@@ -6,6 +6,7 @@ const routertransction = require("./routes/transctions");
 const connext = require("./database/mangodb");
 const routerAuthApi = require("./routes/AuthApi");
 const passport = require("passport");
+const jwtpass= require("./config/passport")
 
 
 
@@ -15,7 +16,7 @@ app.use(cors());
 
 app.use(bodyParser.json());
 app.use(passport.initialize());
-
+jwtpass(passport)
 
 connext();
 
