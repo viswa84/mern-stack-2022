@@ -1,10 +1,12 @@
-// import Transaction from "../models/transaction";
+
 
 const Transaction = require("../models/transaction.js");
+const passport = require("passport");
 
 const express = require("express");
 
 const routertransction = express.Router();
+
 
 routertransction.get("/", async (req, res) => {
   const transcation = await Transaction.find({}).sort({ createdAt: -1 });

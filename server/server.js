@@ -5,12 +5,18 @@ const bodyParser = require("body-parser");
 const routertransction = require("./routes/transctions");
 const connext = require("./database/mangodb");
 const routerAuthApi = require("./routes/AuthApi");
+const passport = require("passport");
+
+
 
 const PORT = 4000;
 const app = express(); 
 app.use(cors());
 
 app.use(bodyParser.json());
+app.use(passport.initialize());
+
+
 connext();
 
 app.use("/transaction", routertransction);
