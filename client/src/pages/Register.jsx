@@ -13,9 +13,10 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 
 export default function Register() {
+  const navigate = useNavigate();
   const handleSubmit = async(event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -37,7 +38,9 @@ export default function Register() {
    })
 
    if(res.ok){
-    console.log(`sucess`)
+
+     console.log(`sucess`)
+    navigate("/login")
 
    }
   };

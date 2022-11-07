@@ -13,6 +13,7 @@ import DeleteSharpIcon from "@mui/icons-material/DeleteSharp";
 import dayjs from "dayjs";
 
 export default function TransactionsList({ transaction ,fetchTransactions,setEditTransaction}) {
+  console.log('componrmet')
   const remove = async (_id) => {
     if (!window.confirm("Are you sure you want to delte")) return;
     const res = await fetch(`http://localhost:4000/transaction/${_id}`, {
@@ -28,6 +29,7 @@ if(res.ok) {
        return  dayjs(date).format('DD MMM-YYYY');
   }
 
+  // React.useEffect(()=>{},[transaction])
   return (
     <>
       <Typography variant="h6" sx={{ marginTop: 10 }}>
