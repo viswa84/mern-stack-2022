@@ -17,7 +17,7 @@ routerAuthApi.post("/register", async (req, res) => {
     res.status(406).json({ message: "user already exists" });
     return;
   }
-
+//chEcking user is existd and already or registered and will  
   //hash the user password
   const saltRounds = 10;
   const salt = await bcrypt.genSaltSync(saltRounds);

@@ -7,8 +7,8 @@ const connext = require("./database/mangodb");
 const routerAuthApi = require("./routes/AuthApi");
 const passport = require("passport");
 const jwtpass= require("./config/passport")
-
-
+const  dotenv = require("dotenv")
+dotenv.config();
 
 const PORT = 4000;
 const app = express(); 
